@@ -1,5 +1,4 @@
 // 包版本相关的信息，及其对应的接口
-
 import axios from "axios";
 import urlJoin from "url-join";
 
