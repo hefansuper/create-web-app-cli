@@ -13,5 +13,9 @@
   "description": "create的命令的子包",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.3.1",
+    "inquirer": "^12.4.1"
   }
 }
