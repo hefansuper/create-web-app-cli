@@ -4,6 +4,8 @@ import ora from "ora";
 import path from "node:path";
 import os from "node:os";
 import fse from "fs-extra";
+import ejs from "ejs";
+import { glob } from "glob";
 
 // 睡 1 秒，防止看不到进度条
 function sleep(timeout: number) {
@@ -80,6 +82,24 @@ async function create() {
   fse.copySync(templatePath, targetPath);
 
   spinner.stop();
+
+  // 4: ejs模板渲染
+  // 将变量渲染到模板中
+  const files = await glob("**", {
+    cwd: targetPath,
+    nodir: true,
+    ignore: "node_modules/**",
+  });
+
+  for (let i = 0; i < files.length; i++) {
+    const filePath = path.join(targetPath, files[i]);
+    const renderResult = await ejs.renderFile(filePath, {
+      projectName,
+    });
+    fse.writeFileSync(filePath, renderResult);
+  }
+
+  console.log(`✅✅✅ 项目创建成功： ${targetPath}`);
 }
 
 export default create;

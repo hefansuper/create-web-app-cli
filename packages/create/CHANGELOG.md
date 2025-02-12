@@ -1,5 +1,11 @@
 # @create-web-app-cli/create
 
+## 0.2.1
+
+### Patch Changes
+
+- ejs 模板更新模板的名字和描述
+
 ## 0.2.0
 
 ### Minor Changes
