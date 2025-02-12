@@ -1,8 +1,9 @@
-import { select, input } from "@inquirer/prompts";
+import { select, input, confirm } from "@inquirer/prompts";
 import { NpmPackage } from "@create-web-app-cli/utils";
 import ora from "ora";
 import path from "node:path";
 import os from "node:os";
+import fse from "fs-extra";
 
 // 睡 1 秒，防止看不到进度条
 function sleep(timeout: number) {
@@ -12,6 +13,7 @@ function sleep(timeout: number) {
 }
 
 async function create() {
+  // 1: 交互
   const projectTemplate = await select({
     message: "请选择项目模版",
     choices: [
@@ -36,6 +38,20 @@ async function create() {
     },
   });
 
+  // 最终在用户的目录下生成的可以用的地址。
+  const targetPath = path.join(process.cwd(), projectName);
+
+  // 输入的是已经存在的目录，提示是否清空
+  if (fse.existsSync(targetPath)) {
+    const empty = await confirm({ message: "该目录不为空，是否清空" });
+    if (empty) {
+      fse.emptyDirSync(targetPath);
+    } else {
+      process.exit(0);
+    }
+  }
+
+  // 2：下载模板
   // 下载模板，注意这个地方下载模板是到用户的主目录
   const pkg = new NpmPackage({
     name: projectTemplate,
@@ -53,6 +69,17 @@ async function create() {
     await sleep(1000);
     spinner.stop();
   }
+
+  // 3：拷贝模板
+  const spinner = ora("创建项目中...").start();
+  await sleep(1000);
+
+  // 下载的地址，在home-path下
+  const templatePath = path.join(pkg.npmFilePath, "template");
+
+  fse.copySync(templatePath, targetPath);
+
+  spinner.stop();
 }
 
 export default create;
