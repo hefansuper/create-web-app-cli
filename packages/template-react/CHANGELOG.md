@@ -1,5 +1,11 @@
 # @create-web-app-cli/template-react
 
+## 1.2.0
+
+### Minor Changes
+
+- 9078997: 基本完成 cli 工具的开发
+
 ## 1.1.0
 
 ### Minor Changes

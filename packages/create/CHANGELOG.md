@@ -1,5 +1,16 @@
 # @create-web-app-cli/create
 
+## 0.2.0
+
+### Minor Changes
+
+- 9078997: 基本完成 cli 工具的开发
+
+### Patch Changes
+
+- Updated dependencies [9078997]
+  - @create-web-app-cli/utils@1.2.0
+
 ## 0.1.0
 
 ### Minor Changes
