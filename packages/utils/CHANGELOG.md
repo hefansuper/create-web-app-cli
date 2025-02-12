@@ -1,5 +1,11 @@
 # @create-web-app-cli/utils
 
+## 1.3.0
+
+### Minor Changes
+
+- 更新 url-join
+
 ## 1.2.2
 
 ### Patch Changes

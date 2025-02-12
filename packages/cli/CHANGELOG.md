@@ -1,5 +1,11 @@
 # @create-web-app-cli/cli
 
+## 0.2.4
+
+### Patch Changes
+
+- @create-web-app-cli/create@0.2.4
+
 ## 0.2.3
 
 ### Patch Changes
