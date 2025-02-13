@@ -5,10 +5,24 @@ import OpenAI from "openai";
 import fse from "fs-extra";
 import { remark } from "remark";
 import ora from "ora";
+import { cosmiconfig } from "cosmiconfig";
 
-import { systemContent } from "./prompt.js";
+import { ConfigOptions } from "./configType.js";
 
 async function generate() {
+  // 查找是否有配置文件，没有则退出。
+  // 提示词是写在template中的，按照模板生成的时候，会根据这个提示词生成对应的代码
+  const explorer = cosmiconfig("prompt");
+
+  const result = await explorer.search(process.cwd());
+
+  if (!result?.config) {
+    console.error("没找到配置文件 generate.config.js");
+    process.exit(1);
+  }
+
+  const config: ConfigOptions = result.config;
+
   const componentDir = await input({
     message: "生成组件的目录:",
     default: "src/components",
@@ -30,7 +44,7 @@ async function generate() {
 
   const client = new OpenAI({
     apiKey,
-    baseURL: "https://api.302.ai/v1/chat/completions",
+    baseURL: config?.baseUrl,
   });
 
   const spinner = ora("🔨 AI 生成代码中...").start();
@@ -38,7 +52,7 @@ async function generate() {
   const res = await client.chat.completions.create({
     model: "gpt-4",
     messages: [
-      { role: "system", content: systemContent },
+      { role: "system", content: config?.systemSetting },
       { role: "user", content: componentDesc },
     ],
   });

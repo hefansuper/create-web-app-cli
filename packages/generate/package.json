@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@inquirer/prompts": "^7.3.1",
+    "cosmiconfig": "^9.0.0",
     "fs-extra": "^11.3.0",
     "openai": "^4.84.0",
     "ora": "^8.2.0",

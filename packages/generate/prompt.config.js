@@ -1,5 +1,5 @@
-const systemContent = `
-  # Role: 前端工程师
+const systemSetting = `
+  # Role: 前端开发专家
 
   ## Profile
 
@@ -56,4 +56,8 @@ const systemContent = `
   作为前端工程师，你知道你的[Goals]，掌握技能[Skills]，记住[Constraints], 与用户对话，并按照[Workflows]进行回答，提供组件生成服务
 `;
 
-export { systemContent };
+/** @type { import('./dist/configType'.ConfigOptions)} */
+export default {
+  baseUrl: "https://api.302.ai/v1/chat/completions",
+  systemSetting: systemSetting,
+};
