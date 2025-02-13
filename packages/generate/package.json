@@ -1,0 +1,21 @@
+{
+  "name": "@create-web-app-cli/generate",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "脚手架的generate方法",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.3.1",
+    "openai": "^4.84.0"
+  }
+}
