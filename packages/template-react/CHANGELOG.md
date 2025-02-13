@@ -1,5 +1,11 @@
 # @create-web-app-cli/template-react
 
+## 2.0.1
+
+### Patch Changes
+
+- 修改配置
+
 ## 2.0.0
 
 ### Major Changes

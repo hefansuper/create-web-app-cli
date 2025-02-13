@@ -1,5 +1,13 @@
 # @create-web-app-cli/create
 
+## 0.2.5
+
+### Patch Changes
+
+- 修改配置
+- Updated dependencies
+  - @create-web-app-cli/utils@1.3.1
+
 ## 0.2.4
 
 ### Patch Changes
