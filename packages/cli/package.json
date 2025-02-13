@@ -19,6 +19,7 @@
   "type": "module",
   "dependencies": {
     "@create-web-app-cli/create": "workspace:^",
+    "@create-web-app-cli/generate": "workspace:^",
     "commander": "^13.1.0",
     "fs-extra": "^11.3.0"
   },

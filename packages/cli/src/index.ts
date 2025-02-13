@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import create from "@create-web-app-cli/create";
+import generate from "@create-web-app-cli/generate";
 import { Command } from "commander";
 import fse from "fs-extra";
 import path from "node:path";
@@ -22,6 +23,13 @@ program
   .description("创建项目")
   .action(async () => {
     create();
+  });
+
+program
+  .command("generate")
+  .description("AI生成文件")
+  .action(async () => {
+    generate();
   });
 
 program.parse();
