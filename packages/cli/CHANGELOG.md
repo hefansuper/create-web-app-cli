@@ -1,5 +1,16 @@
 # @create-web-app-cli/cli
 
+## 1.0.0
+
+### Major Changes
+
+- aebf2c1: generate 支持 AI
+
+### Patch Changes
+
+- Updated dependencies [aebf2c1]
+  - @create-web-app-cli/generate@2.0.0
+
 ## 0.2.4
 
 ### Patch Changes
